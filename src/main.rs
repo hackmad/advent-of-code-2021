@@ -29,5 +29,5 @@ fn main() {
     day06::part2("./inputs/day06/1.txt");
 
     day07::part1("./inputs/day07/1.txt");
-    day07::part2("./inputs/day07/0.txt");
+    day07::part2("./inputs/day07/1.txt");
 }
