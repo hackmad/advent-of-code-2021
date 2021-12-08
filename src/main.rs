@@ -8,6 +8,7 @@ mod day04;
 mod day05;
 mod day06;
 mod day07;
+mod day08;
 
 fn main() {
     day01::part1("./inputs/day01/1.txt");
@@ -30,4 +31,7 @@ fn main() {
 
     day07::part1("./inputs/day07/1.txt");
     day07::part2("./inputs/day07/1.txt");
+
+    day08::part1("./inputs/day08/1.txt");
+    day08::part2("./inputs/day08/1.txt");
 }

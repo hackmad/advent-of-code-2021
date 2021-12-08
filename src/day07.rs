@@ -1,4 +1,3 @@
-use std::collections::HashMap;
 use std::fs;
 
 fn read(input_file: &str) -> Vec<isize> {
