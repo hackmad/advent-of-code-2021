@@ -73,26 +73,26 @@ fn sort_str_chars(s: &str) -> String {
 }
 
 fn decode_signals(signals: &Vec<String>) -> Vec<String> {
-    let digits = signals
+    let signals = signals
         .iter()
         .map(|signal| (signal, signals_to_digits(&signal)));
 
     let mut signals_by_digit = [""; 10];
 
     // Figure out the signals that map to exactly 1 digit.
-    let easy_digits = digits.clone().filter(|d| d.1.is_left());
+    let easy_digits = signals.clone().filter(|d| d.1.is_left());
     for (signal, digit) in easy_digits {
         let digit = digit.unwrap_left();
         signals_by_digit[digit] = signal;
     }
 
     // Get the signals for [2, 3, 5] and [0, 6, 9].
-    let signal_235 = digits
+    let signal_235 = signals
         .clone()
         .filter(|(_, d)| d.is_right() && d.unwrap_right()[0] == 2)
         .map(|(s, _)| s);
 
-    let signal_069 = digits
+    let signal_069 = signals
         .clone()
         .filter(|(_, d)| d.is_right() && d.unwrap_right()[0] == 0)
         .map(|(s, _)| s);
