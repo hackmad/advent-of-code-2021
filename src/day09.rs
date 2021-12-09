@@ -1,5 +1,7 @@
 use std::fs;
 
+use itertools::iproduct;
+
 fn read(input_file: &str) -> Vec<Vec<u8>> {
     let contents = fs::read_to_string(input_file).expect("Something went wrong reading the file");
     contents
@@ -8,47 +10,33 @@ fn read(input_file: &str) -> Vec<Vec<u8>> {
         .collect()
 }
 
-fn search_positions(r: usize, c: usize, h: usize, w: usize) -> Vec<(usize, usize)> {
-    let r = r as isize;
-    let c = c as isize;
-    let h = h as isize;
-    let w = w as isize;
+fn neighbours(r: usize, c: usize, h: usize, w: usize) -> Vec<(usize, usize)> {
+    // Convert to isize for easier computation.
+    let (r, c, h, w) = (r as isize, c as isize, h as isize, w as isize);
 
-    let adj: [(isize, isize); 4] = [(-1, 0), (1, 0), (0, -1), (0, 1)];
-
-    let mut p = Vec::<(usize, usize)>::with_capacity(4);
-    for a in adj {
-        let r1 = r + a.0;
-        let c1 = c + a.1;
-        if r1 >= 0 && r1 < h && c1 >= 0 && c1 < w {
-            p.push((r1 as usize, c1 as usize));
-        }
-    }
-    p
+    // Left, Right, Bottom, Top
+    [(-1, 0), (1, 0), (0, -1), (0, 1)]
+        .iter()
+        .map(|&(r1, c1)| (r + r1, c + c1)) // Neighbour
+        .filter(|&(r1, c1)| r1 >= 0 && r1 < h && c1 >= 0 && c1 < w) // Bounds check
+        .map(|(r1, c1)| (r1 as usize, c1 as usize)) // Convert back to usize
+        .collect()
 }
 
 fn find_low_points(hm: &Vec<Vec<u8>>) -> Vec<(usize, usize)> {
-    let mut lows: Vec<(usize, usize)> = vec![];
-
     let h = hm.len();
     let w = hm[0].len();
 
-    for r in 0..h {
-        for c in 0..w {
-            let is_low = search_positions(r, c, h, w)
+    iproduct!(0..h, 0..w)
+        .filter(|&(r, c)| {
+            neighbours(r, c, h, w)
                 .iter()
-                .fold(true, |a, &(r2, c2)| a && hm[r][c] < hm[r2][c2]);
-
-            if is_low {
-                lows.push((r, c));
-            }
-        }
-    }
-
-    lows
+                .fold(true, |a, &(r2, c2)| a && hm[r][c] < hm[r2][c2])
+        })
+        .collect()
 }
 
-fn search_basin(
+fn bfs_basin(
     hm: &Vec<Vec<u8>>,
     seen: &mut Vec<Vec<bool>>,
     r: usize,
@@ -56,24 +44,26 @@ fn search_basin(
     h: usize,
     w: usize,
 ) -> usize {
+    // Ignore already seen point.
     if seen[r][c] {
         return 0;
     }
     seen[r][c] = true;
 
+    // Don't include 9.
     if hm[r][c] > 8 {
         return 0;
     }
 
-    let positions = search_positions(r, c, h, w);
-
-    let mut s = 1;
-    for &(r2, c2) in positions.iter() {
+    // Add 1 for current point.
+    neighbours(r, c, h, w).iter().fold(1, |sum, &(r2, c2)| {
+        // Include next higher neighbour.
         if hm[r2][c2] > hm[r][c] {
-            s += search_basin(hm, seen, r2, c2, h, w);
+            sum + bfs_basin(hm, seen, r2, c2, h, w)
+        } else {
+            sum
         }
-    }
-    s
+    })
 }
 
 pub fn part1(input_file: &str) {
@@ -92,13 +82,17 @@ pub fn part2(input_file: &str) {
     let h = heightmap.len();
     let w = heightmap[0].len();
 
+    // We could use separate `seen` for each bfs_basin() call and then
+    // count all true values to get size of basin without counting the
+    // visited points in the recursive function.
     let mut seen = vec![vec![false; w]; h];
     let mut basin_sizes: Vec<usize> = lows
         .iter()
-        .map(|&(r, c)| search_basin(&heightmap, &mut seen, r, c, h, w))
+        .map(|&(r, c)| bfs_basin(&heightmap, &mut seen, r, c, h, w))
         .collect();
     basin_sizes.sort();
 
+    // Multiply top 3 sizes.
     let n = basin_sizes.iter().rev().take(3).fold(1, |a, s| a * s);
     println!("day 09: part 2 = {}", n);
 }
