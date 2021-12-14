@@ -1,6 +1,5 @@
-use std::collections::{vec_deque, VecDeque};
+use std::collections::VecDeque;
 use std::fs;
-use std::thread::current;
 
 use itertools::Itertools;
 
