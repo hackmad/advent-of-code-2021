@@ -1,6 +1,6 @@
 ### --- Day 11: Dumbo Octopus ---
 
-You enter a large cavern full of rare bioluminescent `dumbo octopuses`! They seem to not like the Christmas lights on your submarine, so you turn them off for now.
+You enter a large cavern full of rare bioluminescent [__dumbo octopuses__](https://www.youtube.com/watch?v=eih-VSaS2g0)! They seem to not like the Christmas lights on your submarine, so you turn them off for now.
 
 There are 100 octopuses arranged neatly in a 10 by 10 grid. Each octopus slowly gains __energy__ over time and __flashes__ brightly for a moment when its energy is full. Although your lights are off, maybe you could navigate through the cave without disturbing the octopuses if you could predict when the flashes of light will happen.
 
