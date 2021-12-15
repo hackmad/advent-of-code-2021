@@ -18,5 +18,5 @@ This repo houses the solutions in Rust for (Advent of Code 2021)[https://advento
 # Running
 
 ```bash
-cargo run
+cargo run -- 15
 ```
