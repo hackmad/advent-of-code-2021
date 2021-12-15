@@ -151,7 +151,7 @@ pub fn part1(input_file: &str) {
     let (least_common, most_common) = apply_insertion_rules(&template, &insertion_rules, 10);
 
     println!(
-        "day 13: part 1 = {} - {} = {}",
+        "day 14: part 1 = {} - {} = {}",
         most_common,
         least_common,
         most_common - least_common
@@ -163,7 +163,7 @@ pub fn part2(input_file: &str) {
     let (least_common, most_common) = apply_insertion_rules(&template, &insertion_rules, 40);
 
     println!(
-        "day 13: part 2 = {} - {} = {}",
+        "day 14: part 2 = {} - {} = {}",
         most_common,
         least_common,
         most_common - least_common
