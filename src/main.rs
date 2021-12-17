@@ -99,7 +99,7 @@ fn main() {
         }
         16 => {
             day16::part1("./inputs/day16/1.txt");
-            day16::part2("./inputs/day16/0.txt");
+            day16::part2("./inputs/day16/1.txt");
         }
         d if d <= 31 => {
             println!("Day {} not done yet", day);

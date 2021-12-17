@@ -1,8 +1,52 @@
 use std::{fmt, fs, iter::repeat};
 
+enum Op {
+    Sum,
+    Product,
+    Minimum,
+    Maximum,
+    GreaterThan,
+    LessThan,
+    Equal,
+    Invalid(u8),
+}
+
+impl From<u8> for Op {
+    fn from(v: u8) -> Self {
+        match v {
+            0 => Self::Sum,
+            1 => Self::Product,
+            2 => Self::Minimum,
+            3 => Self::Maximum,
+            5 => Self::GreaterThan,
+            6 => Self::LessThan,
+            7 => Self::Equal,
+            _ => Self::Invalid(v),
+        }
+    }
+}
+
+impl fmt::Display for Op {
+    /// Formats the value using the given formatter.
+    ///
+    /// * `f`     - Formatter
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+        match self {
+            Self::Sum => write!(f, "+"),
+            Self::Product => write!(f, "*"),
+            Self::Minimum => write!(f, "min"),
+            Self::Maximum => write!(f, "max"),
+            Self::GreaterThan => write!(f, ">"),
+            Self::LessThan => write!(f, "<"),
+            Self::Equal => write!(f, "=="),
+            Self::Invalid(v) => write!(f, "invalid({})", v),
+        }
+    }
+}
+
 enum Packet {
     Literal(u8, u64),              // Version, Literal Value.
-    Operator(u8, u8, Vec<Packet>), // Version, Type and Sub-packets.
+    Operator(u8, Op, Vec<Packet>), // Version, Type and Sub-packets.
 }
 
 impl Packet {
@@ -31,7 +75,7 @@ impl Packet {
 
         match packet_type {
             4 => Packet::parse_literal(version, s),
-            _ => Packet::parse_operator(version, packet_type, s),
+            _ => Packet::parse_operator(version, packet_type.into(), s),
         }
     }
 
@@ -98,7 +142,10 @@ impl Packet {
             s => panic!("Expecting '0' or '1' for length type ID. Found '{}'.", s),
         };
 
-        (Self::Operator(version, packet_type, sub_packets), next)
+        (
+            Self::Operator(version, packet_type.into(), sub_packets),
+            next,
+        )
     }
 
     /// Parses all sub-packets in a binary sequence and returns a list of decoded
@@ -197,6 +244,58 @@ impl Packet {
         }
     }
 
+    /// Recursively evaluates the expression in the given packet.
+    fn evaluate(&self) -> Result<u64, String> {
+        match self {
+            Self::Literal(_, value) => Ok(*value),
+            Self::Operator(_, Op::Invalid(op), _) => {
+                Err(format!("cannot evaluate invalid operation '{}'", op))
+            }
+            Self::Operator(_, Op::Sum, packets) => {
+                let mut result = 0_u64;
+                for p in packets {
+                    let v = p.evaluate()?;
+                    result += v;
+                }
+                Ok(result)
+            }
+            Self::Operator(_, Op::Product, packets) => {
+                let mut result = 1_u64;
+                for p in packets {
+                    let v = p.evaluate()?;
+                    result *= v;
+                }
+                Ok(result)
+            }
+            Self::Operator(_, Op::Minimum, packets) => {
+                let mut result = packets[0].evaluate()?;
+                for p in packets.iter().skip(1) {
+                    let v = p.evaluate()?;
+                    result = result.min(v);
+                }
+                Ok(result)
+            }
+            Self::Operator(_, Op::Maximum, packets) => {
+                let mut result = packets[0].evaluate()?;
+                for p in packets.iter().skip(1) {
+                    let v = p.evaluate()?;
+                    result = result.max(v);
+                }
+                Ok(result)
+            }
+            Self::Operator(_, op, packets) => {
+                let a = packets[0].evaluate();
+                let b = packets[1].evaluate();
+                match op {
+                    Op::GreaterThan => Ok((a > b) as u64),
+                    Op::LessThan => Ok((a < b) as u64),
+                    Op::Equal => Ok((a == b) as u64),
+                    _ => unreachable!(),
+                }
+            }
+        }
+    }
+
     /// Pretty prints the packets.
     ///
     /// * `f`     - Formatter
@@ -245,7 +344,11 @@ pub fn part1(input_file: &str) {
     for s in tx {
         let (p, _) = Packet::parse(&s);
         let sum: usize = p.get_versions().iter().map(|&v| v as usize).sum();
-        println!("{}", s);
+        if s.len() < 20 {
+            println!("{}", s);
+        } else {
+            println!("{}...", &s[0..20]);
+        }
         println!("{}", p);
         println!("sum versions = {}", sum);
         println!();
@@ -253,10 +356,19 @@ pub fn part1(input_file: &str) {
 }
 
 pub fn part2(input_file: &str) {
-    /*
+    println!("day 16: part 2");
     let tx = read(input_file);
     for s in tx {
-        let (_, _) = Packet::parse(&s);
-        println!("day 16: part 1 = {}", 0);
-    } */
+        let (p, _) = Packet::parse(&s);
+        match p.evaluate() {
+            Ok(r) => {
+                if s.len() < 20 {
+                    println!("{} = {}", s, r);
+                } else {
+                    println!("{}... = {}", &s[0..20], r);
+                }
+            }
+            Err(e) => println!("{}", e),
+        }
+    }
 }
