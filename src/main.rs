@@ -18,6 +18,7 @@ mod day12;
 mod day13;
 mod day14;
 mod day15;
+mod day16;
 
 fn main() {
     let args: Vec<String> = env::args().collect();
@@ -95,6 +96,10 @@ fn main() {
         15 => {
             day15::part1("./inputs/day15/1.txt");
             day15::part2("./inputs/day15/1.txt");
+        }
+        16 => {
+            day16::part1("./inputs/day16/1.txt");
+            day16::part2("./inputs/day16/0.txt");
         }
         d if d <= 31 => {
             println!("Day {} not done yet", day);

@@ -7,34 +7,36 @@
         {
             "type": "lldb",
             "request": "launch",
-            "name": "Debug executable 'day-01'",
+            "name": "Debug executable 'aoc-2021'",
             "cargo": {
                 "args": [
                     "build",
-                    "--bin=day-01",
-                    "--package=day-01"
+                    "--bin=aoc-2021",
+                    "--package=aoc-2021"
                 ],
                 "filter": {
-                    "name": "day-01",
+                    "name": "aoc-2021",
                     "kind": "bin"
                 }
             },
-            "args": [],
+            "args": [
+                "16"
+            ],
             "cwd": "${workspaceFolder}"
         },
         {
             "type": "lldb",
             "request": "launch",
-            "name": "Debug unit tests in executable 'day-01'",
+            "name": "Debug unit tests in executable 'aoc-2021'",
             "cargo": {
                 "args": [
                     "test",
                     "--no-run",
-                    "--bin=day-01",
-                    "--package=day-01"
+                    "--bin=aoc-2021",
+                    "--package=aoc-2021"
                 ],
                 "filter": {
-                    "name": "day-01",
+                    "name": "aoc-2021",
                     "kind": "bin"
                 }
             },
