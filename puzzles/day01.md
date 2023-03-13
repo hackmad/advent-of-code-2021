@@ -29,7 +29,7 @@ This report indicates that, scanning outward from the submarine, the sonar sweep
 
 The first order of business is to figure out how quickly the depth increases, just so you know what you're dealing with - you never know if the keys will get carried into deeper water by an ocean current or a fish or something.
 
-To do this, count __the number of times a depth measurement increases from the previous measurement__. (There is no measurement before the first measurement.) In the example above, the changes are as follows:
+To do this, count **the number of times a depth measurement increases from the previous measurement**. (There is no measurement before the first measurement.) In the example above, the changes are as follows:
 
 ```
 199 (N/A - no previous measurement)
@@ -46,24 +46,24 @@ To do this, count __the number of times a depth measurement increases from the p
 
 In this example, there are `7` measurements that are larger than the previous measurement.
 
-__How many measurements are larger than the previous measurement?__
+**How many measurements are larger than the previous measurement?**
 
-Your puzzle answer was `1462`.
+Your puzzle answer was `1482`.
 
 ### --- Part Two ---
 
 Considering every single measurement isn't as useful as you expected: there's just too much noise in the data.
 
-Instead, consider sums of a __three-measurement sliding window__. Again considering the above example:
+Instead, consider sums of a **three-measurement sliding window**. Again considering the above example:
 
 ```
-199  A      
-200  A B    
-208  A B C  
+199  A
+200  A B
+208  A B C
 210    B C D
 200  E   C D
 207  E F   D
-240  E F G  
+240  E F G
 269    F G H
 260      G H
 263        H
@@ -71,7 +71,7 @@ Instead, consider sums of a __three-measurement sliding window__. Again consider
 
 Start by comparing the first and second three-measurement windows. The measurements in the first window are marked A (199, 200, 208); their sum is 199 + 200 + 208 = 607. The second window is marked B (200, 208, 210); its sum is 618. The sum of measurements in the second window is larger than the sum of the first, so this first comparison increased.
 
-Your goal now is to count __the number of times the sum of measurements in this sliding window increases__ from the previous sum. So, compare A with B, then compare B with C, then C with D, and so on. Stop when there aren't enough measurements left to create a new three-measurement sum.
+Your goal now is to count **the number of times the sum of measurements in this sliding window increases** from the previous sum. So, compare A with B, then compare B with C, then C with D, and so on. Stop when there aren't enough measurements left to create a new three-measurement sum.
 
 In the above example, the sum of each three-measurement window is as follows:
 
@@ -88,6 +88,6 @@ H: 792 (increased)
 
 In this example, there are `5` sums that are larger than the previous sum.
 
-Consider sums of a three-measurement sliding window. __How many sums are larger than the previous sum?__
+Consider sums of a three-measurement sliding window. **How many sums are larger than the previous sum?**
 
-Your puzzle answer was `1497`.
+Your puzzle answer was `1518`.

@@ -47,15 +47,12 @@ impl fmt::Display for Line {
 fn read(input_file: &str) -> Vec<Line> {
     let contents = fs::read_to_string(input_file).expect("Something went wrong reading the file");
     contents
-        .split("\n")
+        .lines()
         .map(|s| s.replace(" -> ", ","))
         .map(|s| {
             let coords: Vec<i32> = s
                 .split(",")
-                .map(|c| {
-                    c.parse::<i32>()
-                        .expect(&format!("invalid non-numeric input {}", s))
-                })
+                .map(|c| c.parse().expect(&format!("invalid non-numeric input {s}")))
                 .collect();
             Line::new(coords.try_into().unwrap())
         })

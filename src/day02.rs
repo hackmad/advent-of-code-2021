@@ -3,11 +3,13 @@ use std::fs;
 fn read(input_file: &str) -> Vec<(String, i64)> {
     let contents = fs::read_to_string(input_file).expect("Something went wrong reading the file");
     contents
-        .split("\n")
+        .lines()
         .map(|s| {
             let c: Vec<&str> = s.split(" ").collect();
             let command = c[0].to_string();
-            let value = c[1].parse::<i64>().expect("Invalid command value");
+            let value: i64 = c[1]
+                .parse()
+                .expect(format!("Invalid command value '{}'", c[1]).as_str());
             (command, value)
         })
         .collect()

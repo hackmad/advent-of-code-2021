@@ -1,8 +1,8 @@
 ### --- Day 5: Hydrothermal Venture ---
 
-You come across a field of [__hydrothermal vents__](https://en.wikipedia.org/wiki/Hydrothermal_vent) on the ocean floor! These vents constantly produce large, opaque clouds, so it would be best to avoid them if possible.
+You come across a field of [**hydrothermal vents**](https://en.wikipedia.org/wiki/Hydrothermal_vent) on the ocean floor! These vents constantly produce large, opaque clouds, so it would be best to avoid them if possible.
 
-They tend to form in __lines__; the submarine helpfully produces a list of nearby lines of vents (your puzzle input) for you to review. For example:
+They tend to form in **lines**; the submarine helpfully produces a list of nearby lines of vents (your puzzle input) for you to review. For example:
 
 ```
 0,9 -> 5,9
@@ -22,7 +22,7 @@ Each line of vents is given as a line segment in the format `x1,y1 -> x2,y2` whe
 - An entry like `2,1 -> 1,3` covers points `1,1`, `1,2`, and `1,3`.
 - An entry like `9,7 -> 7,7` covers points `9,7`, `8,7`, and `7,7`.
 
-For now, __only consider horizontal and vertical lines__: lines where either __x1 = x2__ or __y1 = y2__.
+For now, **only consider horizontal and vertical lines**: lines where either **x1 = x2** or **y1 = y2**.
 
 So, the horizontal and vertical lines from the above list would produce the following diagram:
 
@@ -39,17 +39,17 @@ So, the horizontal and vertical lines from the above list would produce the foll
 222111....
 ```
 
-In this diagram, the top left corner is 0,0 and the bottom right corner is 9,9. Each position is shown as __the number of lines which cover that point__ or `.` if no line covers that point. The top-left pair of 1s, for example, comes from `2,2 -> 2,1`; the very bottom row is formed by the overlapping lines `0,9 -> 5,9` and `0,9 -> 2,9`.
+In this diagram, the top left corner is 0,0 and the bottom right corner is 9,9. Each position is shown as **the number of lines which cover that point** or `.` if no line covers that point. The top-left pair of 1s, for example, comes from `2,2 -> 2,1`; the very bottom row is formed by the overlapping lines `0,9 -> 5,9` and `0,9 -> 2,9`.
 
-To avoid the most dangerous areas, you need to determine __the number of points where at least two lines overlap__. In the above example, this is anywhere in the diagram with a 2 or larger - a total of `5` points.
+To avoid the most dangerous areas, you need to determine **the number of points where at least two lines overlap**. In the above example, this is anywhere in the diagram with a 2 or larger - a total of `5` points.
 
-Consider only horizontal and vertical lines. __At how many points do at least two lines overlap?__
+Consider only horizontal and vertical lines. **At how many points do at least two lines overlap?**
 
-Your puzzle answer was `7085`.
+Your puzzle answer was `8111`.
 
 ### --- Part Two ---
 
-Unfortunately, considering only horizontal and vertical lines doesn't give you the full picture; you need to also consider __diagonal lines__.
+Unfortunately, considering only horizontal and vertical lines doesn't give you the full picture; you need to also consider **diagonal lines**.
 
 Because of the limits of the hydrothermal vent mapping system, the lines in your list will only ever be horizontal, vertical, or a diagonal line at exactly 45 degrees. In other words:
 
@@ -71,8 +71,8 @@ Considering all lines from the above example would now produce the following dia
 222111....
 ```
 
-You still need to determine __the number of points where at least two lines overlap__. In the above example, this is still anywhere in the diagram with a 2 or larger - now a total of `12` points.
+You still need to determine **the number of points where at least two lines overlap**. In the above example, this is still anywhere in the diagram with a 2 or larger - now a total of `12` points.
 
-Consider all of the lines. __At how many points do at least two lines overlap?__
+Consider all of the lines. **At how many points do at least two lines overlap?**
 
-Your puzzle answer was `20271`.
+Your puzzle answer was `22088`.

@@ -4,8 +4,11 @@ use std::fs;
 fn read(input_file: &str) -> Vec<i64> {
     let contents = fs::read_to_string(input_file).expect("Something went wrong reading the file");
     contents
-        .split("\n")
-        .map(|s| s.parse::<i64>().expect("invalid non-numeric input"))
+        .lines()
+        .map(|s| {
+            s.parse()
+                .expect(format!("invalid non-numeric input '{s}'").as_str())
+        })
         .collect()
 }
 

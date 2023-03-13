@@ -25,7 +25,7 @@ impl Entry {
 fn read(input_file: &str) -> Vec<Entry> {
     let contents = fs::read_to_string(input_file).expect("Something went wrong reading the file");
     contents
-        .split("\n")
+        .lines()
         .map(|entry| {
             let split = entry.split("|").collect_vec();
             assert!(split.len() == 2, "invalid entry format");

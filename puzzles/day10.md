@@ -6,9 +6,9 @@ You ask the submarine to determine the best route out of the deep-sea cave, but 
 Syntax error in navigation subsystem on line: all of them
 ```
 
-__All of them?!__ The damage is worse than you thought. You bring up a copy of the navigation subsystem (your puzzle input).
+**All of them?!** The damage is worse than you thought. You bring up a copy of the navigation subsystem (your puzzle input).
 
-The navigation subsystem syntax is made of several lines containing chunks. There are one or more chunks on each line, and chunks contain zero or more other chunks. Adjacent chunks are not separated by any delimiter; if one chunk stops, the next chunk (if any) can immediately start. Every chunk must __open__ and __close__ with one of four legal pairs of matching characters:
+The navigation subsystem syntax is made of several lines containing chunks. There are one or more chunks on each line, and chunks contain zero or more other chunks. Adjacent chunks are not separated by any delimiter; if one chunk stops, the next chunk (if any) can immediately start. Every chunk must **open** and **close** with one of four legal pairs of matching characters:
 
 - If a chunk opens with `(`, it must close with `)`.
 - If a chunk opens with `[`, it must close with `]`.
@@ -17,9 +17,9 @@ The navigation subsystem syntax is made of several lines containing chunks. Ther
 
 So, `()` is a legal chunk that contains no other chunks, as is `[]`. More complex but valid chunks include `([])`, `{()()()}`, `<([{}])>`, `[<>({}){}[([])<>]]`, and even `(((((((((())))))))))`.
 
-Some lines are __incomplete__, but others are __corrupted__. Find and discard the corrupted lines first.
+Some lines are **incomplete**, but others are **corrupted**. Find and discard the corrupted lines first.
 
-A corrupted line is one where a chunk __closes with the wrong character__ - that is, where the characters it opens and closes with do not form one of the four legal pairs listed above.
+A corrupted line is one where a chunk **closes with the wrong character** - that is, where the characters it opens and closes with do not form one of the four legal pairs listed above.
 
 Examples of corrupted chunks include `(]`, `{()()()>`, `(((()))}`, and `<([]){()}[{}])`. Such a chunk can appear anywhere within a line, and its presence causes the whole line to be considered corrupted.
 
@@ -48,7 +48,7 @@ Some of the lines aren't corrupted, just incomplete; you can ignore these lines 
 
 Stop at the first incorrect closing character on each corrupted line.
 
-Did you know that syntax checkers actually have contests to see who can get the high score for syntax errors in a file? It's true! To calculate the syntax error score for a line, take the __first illegal character__ on the line and look it up in the following table:
+Did you know that syntax checkers actually have contests to see who can get the high score for syntax errors in a file? It's true! To calculate the syntax error score for a line, take the **first illegal character** on the line and look it up in the following table:
 
 - `)`: `3` points.
 - `]`: `57` points.
@@ -57,15 +57,15 @@ Did you know that syntax checkers actually have contests to see who can get the 
 
 In the above example, an illegal `)` was found twice (`2*3` = `6` points), an illegal `]` was found once (`57` points), an illegal `}` was found once (`1197` points), and an illegal `>` was found once (`25137` points). So, the total syntax error score for this file is `6+57+1197+25137` = `26397` points!
 
-Find the first illegal character in each corrupted line of the navigation subsystem. __What is the total syntax error score for those errors?__
+Find the first illegal character in each corrupted line of the navigation subsystem. **What is the total syntax error score for those errors?**
 
-Your puzzle answer was `265527`.
+Your puzzle answer was `318081`.
 
 ### --- Part Two ---
 
 Now, discard the corrupted lines. The remaining lines are incomplete.
 
-Incomplete lines don't have any incorrect characters - instead, they're missing some closing characters at the end of the line. To repair the navigation subsystem, you just need to figure out __the sequence of closing characters__ that complete all open chunks in the line.
+Incomplete lines don't have any incorrect characters - instead, they're missing some closing characters at the end of the line. To repair the navigation subsystem, you just need to figure out **the sequence of closing characters** that complete all open chunks in the line.
 
 You can only use closing characters (`)`, `]`, `}`, or `>`), and you must add them in the correct order so that only legal pairs are formed and all chunks end up closed.
 
@@ -77,7 +77,7 @@ In the example above, there are five incomplete lines:
 - `{<[[]]>}<{[{[{[]{()[[[]` - Complete by adding `]]}}]}]}>`.
 - `<{([{{}}[<[[[<>{}]]]>[]]` - Complete by adding `])}>`.
 
-Did you know that autocomplete tools __also__ have contests? It's true! The score is determined by considering the completion string character-by-character. Start with a total score of 0. Then, for each character, multiply the total score by 5 and then increase the total score by the point value given for the character in the following table:
+Did you know that autocomplete tools **also** have contests? It's true! The score is determined by considering the completion string character-by-character. Start with a total score of 0. Then, for each character, multiply the total score by 5 and then increase the total score by the point value given for the character in the following table:
 
 - `)`: `1` point.
 - `]`: `2` points.
@@ -100,8 +100,8 @@ The five lines' completion strings have total scores as follows:
 - `]]}}]}]}>` - `995444` total points.
 - `])}>` - `294` total points.
 
-Autocomplete tools are an odd bunch: the winner is found by _sorting_ all of the scores and then taking the __middle__ score. (There will always be an odd number of scores to consider.) In this example, the middle score is `288957` because there are the same number of scores smaller and larger than it.
+Autocomplete tools are an odd bunch: the winner is found by _sorting_ all of the scores and then taking the **middle** score. (There will always be an odd number of scores to consider.) In this example, the middle score is `288957` because there are the same number of scores smaller and larger than it.
 
-Find the completion string for each incomplete line, score the completion strings, and sort the scores. __What is the middle score?__
+Find the completion string for each incomplete line, score the completion strings, and sort the scores. **What is the middle score?**
 
-Your puzzle answer was `3969823589`.
+Your puzzle answer was `4361305341`.

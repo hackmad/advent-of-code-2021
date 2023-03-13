@@ -117,7 +117,7 @@ fn read(input_file: &str) -> (Origami, Vec<Fold>) {
     let mut folds: Vec<Fold> = vec![];
     let mut dots = true;
 
-    for row in contents.split("\n") {
+    for row in contents.lines() {
         if row.len() == 0 {
             dots = false;
             continue;

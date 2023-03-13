@@ -2,12 +2,12 @@ use std::fs;
 
 fn read(input_file: &str) -> (Vec<u16>, usize) {
     let contents = fs::read_to_string(input_file).expect("Something went wrong reading the file");
-    let contents: Vec<&str> = contents.split("\n").collect();
+    let contents: Vec<&str> = contents.lines().collect();
     let n = contents[0].len();
 
     let contents = contents
         .iter()
-        .map(|s| u16::from_str_radix(s, 2).expect(&format!("invalid non-numeric input {}", s)))
+        .map(|s| u16::from_str_radix(s, 2).expect(&format!("invalid non-numeric input {s}")))
         .collect();
     (contents, n)
 }

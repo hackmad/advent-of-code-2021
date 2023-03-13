@@ -335,7 +335,7 @@ impl fmt::Display for Packet {
 
 fn read(input_file: &str) -> Vec<String> {
     let content = fs::read_to_string(input_file).expect("Something went wrong reading the file");
-    content.split("\n").map(|s| s.to_string()).collect()
+    content.lines().map(|s| s.to_string()).collect()
 }
 
 pub fn part1(input_file: &str) {

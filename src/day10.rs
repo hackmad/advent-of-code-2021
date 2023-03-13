@@ -2,7 +2,7 @@ use std::{collections::VecDeque, fs};
 
 fn read(input_file: &str) -> Vec<String> {
     let contents = fs::read_to_string(input_file).expect("Something went wrong reading the file");
-    contents.split("\n").map(String::from).collect()
+    contents.lines().map(String::from).collect()
 }
 
 fn closing_char(c: char) -> char {

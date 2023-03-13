@@ -9,7 +9,7 @@ fn read(input_file: &str) -> (Vec<char>, HashMap<String, char>) {
     let mut template: Vec<char> = vec![];
     let mut insertion_rules = HashMap::new();
 
-    for (i, row) in contents.split("\n").enumerate() {
+    for (i, row) in contents.lines().enumerate() {
         if i == 0 {
             template = row.chars().collect();
             continue;

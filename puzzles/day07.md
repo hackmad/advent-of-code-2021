@@ -1,8 +1,8 @@
 ### --- Day 7: The Treachery of Whales ---
 
-A giant [__whale__](https://en.wikipedia.org/wiki/Sperm_whale) has decided your submarine is its next meal, and it's much faster than you are. There's nowhere to run!
+A giant [**whale**](https://en.wikipedia.org/wiki/Sperm_whale) has decided your submarine is its next meal, and it's much faster than you are. There's nowhere to run!
 
-Suddenly, a swarm of crabs (each in its own tiny submarine - it's too deep for them otherwise) zooms in to rescue you! They seem to be preparing to blast a hole in the ocean floor; sensors indicate a __massive underground cave system__ just beyond where they're aiming!
+Suddenly, a swarm of crabs (each in its own tiny submarine - it's too deep for them otherwise) zooms in to rescue you! They seem to be preparing to blast a hole in the ocean floor; sensors indicate a **massive underground cave system** just beyond where they're aiming!
 
 The crab submarines all need to be aligned before they'll have enough power to blast a large enough hole for your submarine to get through. However, it doesn't look like they'll be aligned before the whale catches you! Maybe you can help?
 
@@ -20,22 +20,22 @@ This means there's a crab with horizontal position `16`, a crab with horizontal 
 
 Each change of `1` step in horizontal position of a single crab costs `1` fuel. You could choose any horizontal position to align them all on, but the one that costs the least fuel is horizontal position `2`:
 
--  Move from `16` to `2`: `14` fuel
--  Move from `1` to `2`: `1` fuel
--  Move from `2` to `2`: `0` fuel
--  Move from `0` to `2`: `2` fuel
--  Move from `4` to `2`: `2` fuel
--  Move from `2` to `2`: `0` fuel
--  Move from `7` to `2`: `5` fuel
--  Move from `1` to `2`: `1` fuel
--  Move from `2` to `2`: `0` fuel
--  Move from `14` to `2`: `12` fuel
+- Move from `16` to `2`: `14` fuel
+- Move from `1` to `2`: `1` fuel
+- Move from `2` to `2`: `0` fuel
+- Move from `0` to `2`: `2` fuel
+- Move from `4` to `2`: `2` fuel
+- Move from `2` to `2`: `0` fuel
+- Move from `7` to `2`: `5` fuel
+- Move from `1` to `2`: `1` fuel
+- Move from `2` to `2`: `0` fuel
+- Move from `14` to `2`: `12` fuel
 
 This costs a total of `37` fuel. This is the cheapest possible outcome; more expensive outcomes include aligning at position `1` (`41` fuel), position `3` (`39` fuel), or position `10` (`71` fuel).
 
-Determine the horizontal position that the crabs can align to using the least fuel possible. __How much fuel must they spend to align to that position?__
+Determine the horizontal position that the crabs can align to using the least fuel possible. **How much fuel must they spend to align to that position?**
 
-Your puzzle answer was `355521`.
+Your puzzle answer was `342641`.
 
 ### --- Part Two ---
 
@@ -45,19 +45,19 @@ As it turns out, crab submarine engines don't burn fuel at a constant rate. Inst
 
 As each crab moves, moving further becomes more expensive. This changes the best horizontal position to align them all on; in the example above, this becomes `5`:
 
--  Move from `16` to `5`: `66` fuel
--  Move from `1` to `5`: `10` fuel
--  Move from `2` to `5`: `6` fuel
--  Move from `0` to `5`: `15` fuel
--  Move from `4` to `5`: `1` fuel
--  Move from `2` to `5`: `6` fuel
--  Move from `7` to `5`: `3` fuel
--  Move from `1` to `5`: `10` fuel
--  Move from `2` to `5`: `6` fuel
--  Move from `14` to `5`: `45` fuel
+- Move from `16` to `5`: `66` fuel
+- Move from `1` to `5`: `10` fuel
+- Move from `2` to `5`: `6` fuel
+- Move from `0` to `5`: `15` fuel
+- Move from `4` to `5`: `1` fuel
+- Move from `2` to `5`: `6` fuel
+- Move from `7` to `5`: `3` fuel
+- Move from `1` to `5`: `10` fuel
+- Move from `2` to `5`: `6` fuel
+- Move from `14` to `5`: `45` fuel
 
 This costs a total of `168` fuel. This is the new cheapest possible outcome; the old alignment position (`2`) now costs `206` fuel instead.
 
-Determine the horizontal position that the crabs can align to using the least fuel possible so they can make you an escape route! __How much fuel must they spend to align to that position?__
+Determine the horizontal position that the crabs can align to using the least fuel possible so they can make you an escape route! **How much fuel must they spend to align to that position?**
 
-Your puzzle answer was `100148777`.
+Your puzzle answer was `93006301`.

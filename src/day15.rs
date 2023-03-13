@@ -42,7 +42,7 @@ impl PartialOrd for Point {
 fn read(input_file: &str) -> Grid {
     let contents = fs::read_to_string(input_file).expect("Something went wrong reading the file");
     contents
-        .split("\n")
+        .lines()
         .map(|row| {
             row.chars()
                 .map(|c| (c as u8 - '0' as u8) as usize)

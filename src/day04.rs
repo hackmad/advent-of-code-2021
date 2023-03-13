@@ -73,7 +73,7 @@ impl Bingo {
     fn new(input_file: &str) -> Self {
         let contents =
             fs::read_to_string(input_file).expect("Something went wrong reading the file");
-        let contents: Vec<&str> = contents.split("\n").collect();
+        let contents: Vec<&str> = contents.lines().collect();
 
         let draws: Vec<u32> = contents[0]
             .split(",")

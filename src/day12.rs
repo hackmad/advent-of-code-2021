@@ -136,7 +136,7 @@ fn read(input_file: &str) -> Graph {
     let mut graph = Graph::new();
 
     let contents = fs::read_to_string(input_file).expect("Something went wrong reading the file");
-    for row in contents.split("\n") {
+    for row in contents.lines() {
         let caves: Vec<_> = row.split("-").collect();
         assert!(caves.len() == 2, "invalid edge");
         graph.insert_edge([caves[0], caves[1]]);

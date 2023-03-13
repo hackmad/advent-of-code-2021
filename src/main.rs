@@ -1,6 +1,8 @@
 use std::env;
 
 extern crate itertools;
+#[macro_use]
+extern crate lazy_static;
 extern crate regex;
 
 mod day01;
@@ -19,6 +21,7 @@ mod day13;
 mod day14;
 mod day15;
 mod day16;
+mod day17;
 
 fn main() {
     let args: Vec<String> = env::args().collect();
@@ -100,6 +103,10 @@ fn main() {
         16 => {
             day16::part1("./inputs/day16/1.txt");
             day16::part2("./inputs/day16/1.txt");
+        }
+        17 => {
+            day17::part1("./inputs/day17/1.txt");
+            day17::part2("./inputs/day17/1.txt");
         }
         d if d <= 31 => {
             println!("Day {} not done yet", day);

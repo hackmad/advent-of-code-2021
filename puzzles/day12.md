@@ -1,6 +1,6 @@
 ### --- Day 12: Passage Pathing ---
 
-With your submarine's subterranean subsystems subsisting suboptimally, the only way you're getting out of this cave anytime soon is by finding a path yourself. Not just __a__ path - the only way to know if you've found the __best__ path is to find all of them.
+With your submarine's subterranean subsystems subsisting suboptimally, the only way you're getting out of this cave anytime soon is by finding a path yourself. Not just **a** path - the only way to know if you've found the **best** path is to find all of them.
 
 Fortunately, the sensors are still mostly working, and so you build a rough map of the remaining caves (your puzzle input). For example:
 
@@ -26,7 +26,7 @@ c--A-----b--d
      end
 ```
 
-Your goal is to find the number of distinct __paths__ that start at start, end at end, and don't visit small caves more than once. There are two types of caves: __big__ caves (written in uppercase, like `A`) and __small__ caves (written in lowercase, like `b`). It would be a waste of time to visit any small cave more than once, but big caves are large enough that it might be worth visiting them multiple times. So, all paths you find should __visit small caves at most once__, and can __visit big caves any number of times__.
+Your goal is to find the number of distinct **paths** that start at start, end at end, and don't visit small caves more than once. There are two types of caves: **big** caves (written in uppercase, like `A`) and **small** caves (written in lowercase, like `b`). It would be a waste of time to visit any small cave more than once, but big caves are large enough that it might be worth visiting them multiple times. So, all paths you find should **visit small caves at most once**, and can **visit big caves any number of times**.
 
 Given these rules, there are `10` paths through this example cave system:
 
@@ -109,13 +109,13 @@ pj-fs
 start-RW
 ```
 
-__How many paths through this cave system are there that visit small caves at most once?__
+**How many paths through this cave system are there that visit small caves at most once?**
 
-Your puzzle answer was `4495`.
+Your puzzle answer was `3230`.
 
 ### --- Part Two ---
 
-After reviewing the available paths, you realize you might have time to visit a single small cave __twice__. Specifically, big caves can be visited any number of times, a single small cave can be visited at most twice, and the remaining small caves can be visited at most once. However, the caves named start and end can only be visited __exactly once each__: once you leave the start cave, you may not return to it, and once you reach the end cave, the path must end immediately.
+After reviewing the available paths, you realize you might have time to visit a single small cave **twice**. Specifically, big caves can be visited any number of times, a single small cave can be visited at most twice, and the remaining small caves can be visited at most once. However, the caves named start and end can only be visited **exactly once each**: once you leave the start cave, you may not return to it, and once you reach the end cave, the path must end immediately.
 
 Now, the `36` possible paths through the first example above are:
 
@@ -160,6 +160,6 @@ start,b,end
 
 The slightly larger example above now has `103` paths through it, and the even larger example now has `3509` paths through it.
 
-Given these new rules, __how many paths through this cave system are there?__
+Given these new rules, **how many paths through this cave system are there?**
 
-Your puzzle answer was `131254`.
+Your puzzle answer was `83475`.

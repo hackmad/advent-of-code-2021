@@ -8,7 +8,7 @@ Fortunately, the submarine seems to be equipped with a thermal camera! When you 
 Congratulations on your purchase! To activate this infrared thermal imaging camera system, please enter the code found on page 1 of the manual.
 ```
 
-Apparently, the Elves have never used this feature. To your surprise, you manage to find the manual; as you go to open it, page 1 falls out. It's a large sheet of [__transparent paper__](https://en.wikipedia.org/wiki/Transparency_(projection))! The transparent paper is marked with random dots and includes instructions on how to fold it up (your puzzle input). For example:
+Apparently, the Elves have never used this feature. To your surprise, you manage to find the manual; as you go to open it, page 1 falls out. It's a large sheet of [**transparent paper**](<https://en.wikipedia.org/wiki/Transparency_(projection)>)! The transparent paper is marked with random dots and includes instructions on how to fold it up (your puzzle input). For example:
 
 ```
 6,10
@@ -54,7 +54,7 @@ The first section is a list of dots on the transparent paper. `0,0` represents t
 #.#........
 ```
 
-Then, there is a list of __fold instructions__. Each instruction indicates a line on the transparent paper and wants you to fold the paper __up__ (for horizontal `y=...` lines) or __left__ (for vertical `x=...` lines). In this example, the first fold instruction is `fold along y=7`, which designates the line formed by all of the positions where `y` is `7` (marked here with `-`):
+Then, there is a list of **fold instructions**. Each instruction indicates a line on the transparent paper and wants you to fold the paper **up** (for horizontal `y=...` lines) or **left** (for vertical `x=...` lines). In this example, the first fold instruction is `fold along y=7`, which designates the line formed by all of the positions where `y` is `7` (marked here with `-`):
 
 ```
 ...#..#..#.
@@ -74,7 +74,7 @@ Then, there is a list of __fold instructions__. Each instruction indicates a lin
 #.#........
 ```
 
-Because this is a horizontal line, fold the bottom half __up__. Some of the dots might end up overlapping after the fold is complete, but dots will never appear exactly on a fold line. The result of doing this fold looks like this:
+Because this is a horizontal line, fold the bottom half **up**. Some of the dots might end up overlapping after the fold is complete, but dots will never appear exactly on a fold line. The result of doing this fold looks like this:
 
 ```
 #.##..#..#.
@@ -90,7 +90,7 @@ Now, only `17` dots are visible.
 
 Notice, for example, the two dots in the bottom left corner before the transparent paper is folded; after the fold is complete, those dots appear in the top left corner (at `0,0` and `0,1`). Because the paper is transparent, the dot just below them in the result (at `0,3`) remains visible, as it can be seen through the transparent paper.
 
-Also notice that some dots can end up __overlapping__; in this case, the dots merge together and become a single dot.
+Also notice that some dots can end up **overlapping**; in this case, the dots merge together and become a single dot.
 
 The second fold instruction is fold along `x=5`, which indicates this line:
 
@@ -104,7 +104,7 @@ The second fold instruction is fold along `x=5`, which indicates this line:
 .....|.....
 ```
 
-Because this is a vertical line, fold __left__:
+Because this is a vertical line, fold **left**:
 
 ```
 #####
@@ -120,14 +120,14 @@ The instructions made a square!
 
 The transparent paper is pretty big, so for now, focus on just completing the first fold. After the first fold in the example above, `17` dots are visible - dots that end up overlapping after the fold is completed count as a single dot.
 
-__How many dots are visible after completing just the first fold instruction on your transparent paper?__
+**How many dots are visible after completing just the first fold instruction on your transparent paper?**
 
-Your puzzle answer was `747`.
+Your puzzle answer was `735`.
 
 ### --- Part Two ---
 
-Finish folding the transparent paper according to the instructions. The manual says the code is always __eight capital letters__.
+Finish folding the transparent paper according to the instructions. The manual says the code is always **eight capital letters**.
 
-__What code do you use to activate the infrared thermal imaging camera system?__
+**What code do you use to activate the infrared thermal imaging camera system?**
 
-Your puzzle answer was `ARHZPCUH`.
+Your puzzle answer was `UFRZKAUZ`.
